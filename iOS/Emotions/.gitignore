@@ -1,0 +1,29 @@
+# =========================
+# iOS / Xcode
+# =========================
+DerivedData/
+.xcodeDerivedData/
+build/
+*.xcuserstate
+**/xcuserdata/
+*.moved-aside
+
+# =========================
+# OS / Editor temp files
+# =========================
+*.swp
+.DS_Store
+
+# =========================
+# Cursor / IDEs
+# =========================
+.cursor/
+cursor/
+cursore/
+.cursor-cache/
+.idea/
+.vscode/
+
+
+.derivedData/
+cursor/rules/

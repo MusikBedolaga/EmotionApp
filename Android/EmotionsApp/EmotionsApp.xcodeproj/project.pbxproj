@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3410A6C62EBE98AA00035811 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3410A6C52EBE98AA00035811 /* Alamofire */; };
+		342DEADE2EBF8FCA00F3EE0F /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 342DEADD2EBF8FCA00F3EE0F /* KeychainSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3410A6A42EBE97D000035811 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3410A68C2EBE97CF00035811 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3410A6932EBE97CF00035811;
+			remoteInfo = EmotionsApp;
+		};
+		3410A6AE2EBE97D000035811 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3410A68C2EBE97CF00035811 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3410A6932EBE97CF00035811;
+			remoteInfo = EmotionsApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3410A6942EBE97CF00035811 /* EmotionsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmotionsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3410A6A32EBE97D000035811 /* EmotionsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmotionsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3410A6AD2EBE97D000035811 /* EmotionsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmotionsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		34AA9DF62EBEC02800CDB83E /* Exceptions for "EmotionsApp" folder in "EmotionsApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3410A6932EBE97CF00035811 /* EmotionsApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3410A6962EBE97CF00035811 /* EmotionsApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				34AA9DF62EBEC02800CDB83E /* Exceptions for "EmotionsApp" folder in "EmotionsApp" target */,
+			);
+			path = EmotionsApp;
+			sourceTree = "<group>";
+		};
+		3410A6A62EBE97D000035811 /* EmotionsAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EmotionsAppTests;
+			sourceTree = "<group>";
+		};
+		3410A6B02EBE97D000035811 /* EmotionsAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EmotionsAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3410A6912EBE97CF00035811 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				342DEADE2EBF8FCA00F3EE0F /* KeychainSwift in Frameworks */,
+				3410A6C62EBE98AA00035811 /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3410A6A02EBE97D000035811 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3410A6AA2EBE97D000035811 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3410A68B2EBE97CE00035811 = {
+			isa = PBXGroup;
+			children = (
+				3410A6962EBE97CF00035811 /* EmotionsApp */,
+				3410A6A62EBE97D000035811 /* EmotionsAppTests */,
+				3410A6B02EBE97D000035811 /* EmotionsAppUITests */,
+				3410A6952EBE97CF00035811 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3410A6952EBE97CF00035811 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3410A6942EBE97CF00035811 /* EmotionsApp.app */,
+				3410A6A32EBE97D000035811 /* EmotionsAppTests.xctest */,
+				3410A6AD2EBE97D000035811 /* EmotionsAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3410A6932EBE97CF00035811 /* EmotionsApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3410A6B72EBE97D000035811 /* Build configuration list for PBXNativeTarget "EmotionsApp" */;
+			buildPhases = (
+				3410A6902EBE97CF00035811 /* Sources */,
+				3410A6912EBE97CF00035811 /* Frameworks */,
+				3410A6922EBE97CF00035811 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3410A6962EBE97CF00035811 /* EmotionsApp */,
+			);
+			name = EmotionsApp;
+			packageProductDependencies = (
+				3410A6C52EBE98AA00035811 /* Alamofire */,
+				342DEADD2EBF8FCA00F3EE0F /* KeychainSwift */,
+			);
+			productName = EmotionsApp;
+			productReference = 3410A6942EBE97CF00035811 /* EmotionsApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3410A6A22EBE97D000035811 /* EmotionsAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3410A6BA2EBE97D000035811 /* Build configuration list for PBXNativeTarget "EmotionsAppTests" */;
+			buildPhases = (
+				3410A69F2EBE97D000035811 /* Sources */,
+				3410A6A02EBE97D000035811 /* Frameworks */,
+				3410A6A12EBE97D000035811 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3410A6A52EBE97D000035811 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3410A6A62EBE97D000035811 /* EmotionsAppTests */,
+			);
+			name = EmotionsAppTests;
+			packageProductDependencies = (
+			);
+			productName = EmotionsAppTests;
+			productReference = 3410A6A32EBE97D000035811 /* EmotionsAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3410A6AC2EBE97D000035811 /* EmotionsAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3410A6BD2EBE97D000035811 /* Build configuration list for PBXNativeTarget "EmotionsAppUITests" */;
+			buildPhases = (
+				3410A6A92EBE97D000035811 /* Sources */,
+				3410A6AA2EBE97D000035811 /* Frameworks */,
+				3410A6AB2EBE97D000035811 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3410A6AF2EBE97D000035811 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3410A6B02EBE97D000035811 /* EmotionsAppUITests */,
+			);
+			name = EmotionsAppUITests;
+			packageProductDependencies = (
+			);
+			productName = EmotionsAppUITests;
+			productReference = 3410A6AD2EBE97D000035811 /* EmotionsAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3410A68C2EBE97CF00035811 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					3410A6932EBE97CF00035811 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					3410A6A22EBE97D000035811 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 3410A6932EBE97CF00035811;
+					};
+					3410A6AC2EBE97D000035811 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 3410A6932EBE97CF00035811;
+					};
+				};
+			};
+			buildConfigurationList = 3410A68F2EBE97CF00035811 /* Build configuration list for PBXProject "EmotionsApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3410A68B2EBE97CE00035811;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3410A6C42EBE98AA00035811 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				342DEADC2EBF8FCA00F3EE0F /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3410A6952EBE97CF00035811 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3410A6932EBE97CF00035811 /* EmotionsApp */,
+				3410A6A22EBE97D000035811 /* EmotionsAppTests */,
+				3410A6AC2EBE97D000035811 /* EmotionsAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3410A6922EBE97CF00035811 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3410A6A12EBE97D000035811 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3410A6AB2EBE97D000035811 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3410A6902EBE97CF00035811 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3410A69F2EBE97D000035811 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3410A6A92EBE97D000035811 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3410A6A52EBE97D000035811 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3410A6932EBE97CF00035811 /* EmotionsApp */;
+			targetProxy = 3410A6A42EBE97D000035811 /* PBXContainerItemProxy */;
+		};
+		3410A6AF2EBE97D000035811 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3410A6932EBE97CF00035811 /* EmotionsApp */;
+			targetProxy = 3410A6AE2EBE97D000035811 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3410A6B52EBE97D000035811 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3410A6B62EBE97D000035811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3410A6B82EBE97D000035811 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmotionsApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = musa.EmotionsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3410A6B92EBE97D000035811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EmotionsApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = musa.EmotionsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3410A6BB2EBE97D000035811 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = musa.EmotionsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmotionsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmotionsApp";
+			};
+			name = Debug;
+		};
+		3410A6BC2EBE97D000035811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = musa.EmotionsAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EmotionsApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EmotionsApp";
+			};
+			name = Release;
+		};
+		3410A6BE2EBE97D000035811 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = musa.EmotionsAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EmotionsApp;
+			};
+			name = Debug;
+		};
+		3410A6BF2EBE97D000035811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63UNQZFXG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = musa.EmotionsAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EmotionsApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3410A68F2EBE97CF00035811 /* Build configuration list for PBXProject "EmotionsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3410A6B52EBE97D000035811 /* Debug */,
+				3410A6B62EBE97D000035811 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3410A6B72EBE97D000035811 /* Build configuration list for PBXNativeTarget "EmotionsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3410A6B82EBE97D000035811 /* Debug */,
+				3410A6B92EBE97D000035811 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3410A6BA2EBE97D000035811 /* Build configuration list for PBXNativeTarget "EmotionsAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3410A6BB2EBE97D000035811 /* Debug */,
+				3410A6BC2EBE97D000035811 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3410A6BD2EBE97D000035811 /* Build configuration list for PBXNativeTarget "EmotionsAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3410A6BE2EBE97D000035811 /* Debug */,
+				3410A6BF2EBE97D000035811 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3410A6C42EBE98AA00035811 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		342DEADC2EBF8FCA00F3EE0F /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3410A6C52EBE98AA00035811 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3410A6C42EBE98AA00035811 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		342DEADD2EBF8FCA00F3EE0F /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 342DEADC2EBF8FCA00F3EE0F /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3410A68C2EBE97CF00035811 /* Project object */;
+}

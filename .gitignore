@@ -1,0 +1,47 @@
+
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Cursor / IDEs
+.cursor/
+.cursor-cache/
+cursor/
+cursore/
+.idea/
+.vscode/
+
+# ---------- iOS / Xcode ----------
+DerivedData/
+.derivedData/
+.xcodeDerivedData/
+build/
+*.xcuserstate
+**/xcuserdata/
+*.moved-aside
+*.swp
+.swiftpm/
+Pods/
+Carthage/Build/
+
+# ---------- Android / Gradle ----------
+.gradle/
+**/build/
+local.properties
+**/*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ---------- Java / Spring (Backend) ----------
+**/target/
+**/*.log
+
+# ---------- Python / ML ----------
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
