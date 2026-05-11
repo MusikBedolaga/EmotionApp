@@ -65,6 +65,19 @@ struct CreateAlbumView: View {
                 TextField("Описание", text: $viewModel.description, axis: .vertical)
                     .lineLimit(3...6)
                     .textFieldStyle(.roundedBorder)
+
+                HStack {
+                    Spacer()
+                    Text("До 50 символов, сейчас \(viewModel.descriptionCaption)")
+                        .font(.footnote)
+                        .foregroundStyle(Color.secondary)
+                }
+
+                if let validation = viewModel.descriptionValidationMessage {
+                    Text(validation)
+                        .font(.footnote)
+                        .foregroundStyle(Color.red)
+                }
             }
 
             Button {

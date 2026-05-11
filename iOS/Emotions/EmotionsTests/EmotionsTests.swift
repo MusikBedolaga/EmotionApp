@@ -18,19 +18,24 @@ final class EmotionsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testTopicEquatable() {
+        let date = Date(timeIntervalSince1970: 0)
+        let t1 = Topic(id: 1, name: "Работа", colorHex: "#112233", createdAt: date)
+        let t2 = Topic(id: 1, name: "Работа", colorHex: "#112233", createdAt: date)
+        XCTAssertEqual(t1, t2)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testAlbumFields() {
+        let a = Album(
+            id: 10,
+            userId: 99,
+            title: "Дневник",
+            description: "Описание",
+            createdAt: Date(timeIntervalSince1970: 100)
+        )
+        XCTAssertEqual(a.id, 10)
+        XCTAssertEqual(a.userId, 99)
+        XCTAssertEqual(a.title, "Дневник")
+        XCTAssertEqual(a.description, "Описание")
     }
-
 }

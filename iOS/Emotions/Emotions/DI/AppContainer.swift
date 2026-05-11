@@ -26,18 +26,25 @@ final class AppContainer {
         AuthRepository(apiClient: apiClient)
     }()
 
-    // MARK: - Content repositories (Mocks)
-    // Держим инстансы стабильными, чтобы SwiftUI не пересоздавал деревья при ререндере.
+    private lazy var contentAPI: ContentAPIProtocol = {
+        ContentAPIClient(apiClient: apiClient)
+    }()
+
+    lazy var analyticsAIRepository: AnalyticsAIRepositoryProtocol = {
+        AnalyticsAIRepository(apiClient: apiClient)
+    }()
+
+    // MARK: - Content repositories
     lazy var albumsRepository: AlbumsRepositoryProtocol = {
-        MockAlbumsRepository(store: ContentMockStore.shared)
+        DefaultAlbumsRepository(api: contentAPI)
     }()
 
     lazy var notesRepository: NotesRepositoryProtocol = {
-        MockNotesRepository(store: ContentMockStore.shared)
+        DefaultNotesRepository(api: contentAPI)
     }()
 
     lazy var topicsRepository: TopicsRepositoryProtocol = {
-        MockTopicsRepository(store: ContentMockStore.shared)
+        DefaultTopicsRepository(api: contentAPI)
     }()
 
     // MARK: - Use Cases

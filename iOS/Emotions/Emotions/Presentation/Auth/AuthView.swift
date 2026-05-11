@@ -90,7 +90,7 @@ private extension AuthView {
         TextField(viewModel.isRegistering ? Literals.emailPlaceholder : Literals.emailOrUsernamePlaceholder, text: $viewModel.email)
             .textFieldStyle(AppTextFieldStyle())
             .autocapitalization(.none)
-            .keyboardType(.emailAddress)
+            .keyboardType(viewModel.isRegistering ? .emailAddress : .default)
             .overlay(
                 viewModel.shouldShakeEmail ? RoundedRectangle(cornerRadius: 10).stroke(Color.red, lineWidth: 2) : nil
             )
@@ -114,14 +114,16 @@ private extension AuthView {
             isLoading: viewModel.isLoading
         ) {
             Task {
-                let success: Bool
                 if viewModel.isRegistering {
-                    success = await viewModel.signUp()
+                    guard let context = await viewModel.signUp() else {
+                        return
+                    }
+                    await session.completeAuthentication(with: context)
                 } else {
-                    success = await viewModel.signIn()
-                }
-                if success {
-                    session.onAuthSuccess()
+                    guard let context = await viewModel.signIn() else {
+                        return
+                    }
+                    await session.completeAuthentication(with: context)
                 }
             }
         }
@@ -150,8 +152,8 @@ private extension AuthView {
     enum Literals {
         static let iconSystemName = "person.circle.fill"
         static let iconTitle = "Иконка"
-        static let namePlaceholder = "Введите имя"
-        static let emailOrUsernamePlaceholder = "Введите имя пользователя или email"
+        static let namePlaceholder = "Введите имя пользователя"
+        static let emailOrUsernamePlaceholder = "Введите имя пользователя"
         static let emailPlaceholder = "Введите email"
         static let passwordPlaceholder = "Введите пароль"
         static let repeatPasswordPlaceholder = "Повторите пароль"

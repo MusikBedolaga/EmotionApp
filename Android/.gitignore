@@ -1,0 +1,45 @@
+# =========================
+# Android Studio / IntelliJ
+# =========================
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# =========================
+# Gradle
+# =========================
+.gradle/
+build/
+**/build/
+
+# =========================
+# Local config
+# =========================
+local.properties
+
+# =========================
+# Android tooling / NDK
+# =========================
+captures/
+.externalNativeBuild/
+.cxx/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# macOS
+# =========================
+.DS_Store
+
+# =========================
+# Keystore / Signing
+# =========================
+*.jks
+*.keystore
+**/keystore.properties
+**/signing.properties

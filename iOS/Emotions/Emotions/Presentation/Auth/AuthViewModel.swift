@@ -1,23 +1,35 @@
 import Foundation
 import SwiftUI
 
+struct AuthSessionContext: Sendable {
+    let token: String
+    let credentialIdentifier: String
+    let password: String
+    let fallbackUsername: String?
+    let fallbackEmail: String?
+}
+
 @MainActor
 final class AuthViewModel: ObservableObject {
+    private enum AuthFlow {
+        case signIn
+        case signUp
+    }
 
-    @Published 
+    @Published
     var email = ""
-    
-    @Published 
+
+    @Published
     var password = ""
-    
-    @Published 
+
+    @Published
     var name = ""
 
     @Published var isLoading = false
     @Published var errorMessage: String?
 
     @Published
-     var isRegistering = false
+    var isRegistering = false
 
     @Published
     var shouldShakeEmail = false
@@ -25,7 +37,7 @@ final class AuthViewModel: ObservableObject {
     @Published
     var shouldShakePassword = false
 
-    @Published 
+    @Published
     var shouldShakeName = false
 
     private let authUseCase: AuthUseCaseProtocol
@@ -36,50 +48,61 @@ final class AuthViewModel: ObservableObject {
 }
 
 extension AuthViewModel {
-    func signIn() async -> Bool {
+    func signIn() async -> AuthSessionContext? {
         isLoading = true
         errorMessage = nil
         defer { isLoading = false }
 
         guard validateUsername() else {
+            errorMessage = Validation.username
             animateShake(\.shouldShakeEmail)
-            return false
+            return nil
         }
 
         guard validatePassword() else {
+            errorMessage = Validation.password
             animateShake(\.shouldShakePassword)
-            return false
+            return nil
         }
 
         do {
             let usernameOrEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
             let request = SignInRequestDTO(username: usernameOrEmail, password: password)
-            _ = try await authUseCase.signIn(request: request)
-            return true
+            let authResponse = try await authUseCase.signIn(request: request)
+            return AuthSessionContext(
+                token: authResponse.token,
+                credentialIdentifier: usernameOrEmail,
+                password: password,
+                fallbackUsername: usernameOrEmail.contains("@") ? nil : usernameOrEmail,
+                fallbackEmail: usernameOrEmail.contains("@") ? usernameOrEmail : nil
+            )
         } catch {
-            errorMessage = error.localizedDescription
-            return false
+            errorMessage = friendlyMessage(for: error, flow: .signIn)
+            return nil
         }
     }
 
-    func signUp() async -> Bool {
+    func signUp() async -> AuthSessionContext? {
         isLoading = true
         errorMessage = nil
         defer { isLoading = false }
 
         guard validateName() else {
+            errorMessage = Validation.username
             animateShake(\.shouldShakeName)
-            return false
+            return nil
         }
 
         guard validateEmail() else {
+            errorMessage = Validation.email
             animateShake(\.shouldShakeEmail)
-            return false
+            return nil
         }
 
         guard validatePassword() else {
+            errorMessage = Validation.password
             animateShake(\.shouldShakePassword)
-            return false
+            return nil
         }
 
         do {
@@ -91,17 +114,28 @@ extension AuthViewModel {
                 email: cleanEmail,
                 password: password
             )
-            _ = try await authUseCase.signUp(request: request)
-            return true
+            let authResponse = try await authUseCase.signUp(request: request)
+            return AuthSessionContext(
+                token: authResponse.token,
+                credentialIdentifier: cleanName,
+                password: password,
+                fallbackUsername: cleanName,
+                fallbackEmail: cleanEmail
+            )
         } catch {
-            errorMessage = error.localizedDescription
-            return false
+            errorMessage = friendlyMessage(for: error, flow: .signUp)
+            return nil
         }
     }
 }
 
 // MARK: - Helpers
 private extension AuthViewModel {
+    enum Validation {
+        static let username = "Имя пользователя должно содержать от 5 до 50 символов."
+        static let email = "Введите корректный email."
+        static let password = "Длина пароля должна быть от 8 до 255 символов."
+    }
 
     func animateShake(_ keyPath: ReferenceWritableKeyPath<AuthViewModel, Bool>) {
         self[keyPath: keyPath] = true
@@ -111,7 +145,8 @@ private extension AuthViewModel {
     }
 
     func validateUsername() -> Bool {
-        email.trimmingCharacters(in: .whitespacesAndNewlines).count >= 2
+        let username = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        return (5...50).contains(username.count)
     }
 
     func validateEmail() -> Bool {
@@ -121,28 +156,111 @@ private extension AuthViewModel {
     }
 
     func validatePassword() -> Bool {
-        password.count >= 6
+        (8...255).contains(password.count)
     }
 
     func validateName() -> Bool {
-        name.trimmingCharacters(in: .whitespacesAndNewlines).count >= 2
+        let username = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        return (5...50).contains(username.count)
+    }
+
+    private func friendlyMessage(for error: Error, flow: AuthFlow) -> String {
+        if let networkError = error as? NetworkError {
+            return friendlyMessage(for: networkError, flow: flow)
+        }
+
+        let nsError = error as NSError
+        if isConnectivityError(nsError) {
+            return "Нет подключения к интернету. Попробуйте позже."
+        }
+
+        return error.localizedDescription
+    }
+
+    private func friendlyMessage(for error: NetworkError, flow: AuthFlow) -> String {
+        switch error {
+        case .requestFailed(let statusCode, let data):
+            if let backendMessage = backendMessage(from: data) {
+                return backendMessage
+            }
+
+            switch statusCode {
+            case 400:
+                return flow == .signUp
+                    ? "Проверьте имя пользователя, email и пароль."
+                    : "Проверьте имя пользователя и пароль."
+            case 401:
+                return "Неверный логин или пароль."
+            case 403:
+                return flow == .signUp
+                    ? "Не удалось зарегистрироваться. Проверьте имя пользователя и email. Возможно, пользователь уже существует."
+                    : "Неверный логин или пароль."
+            case 409:
+                return "Пользователь уже существует."
+            default:
+                return "Ошибка сервера (\(statusCode)). Попробуйте позже."
+            }
+
+        case .unauthorized:
+            return "Неверный логин или пароль."
+        case .invalidURL:
+            return "Некорректный адрес сервера."
+        case .decodingFailed:
+            return "Сервер вернул неожиданный ответ."
+        case .encodingFailed:
+            return "Не удалось подготовить запрос."
+        case .noCredentials:
+            return "Не найдены данные для входа."
+        case .unknown(let wrappedError):
+            let nsError = wrappedError as NSError
+            if isConnectivityError(nsError) {
+                return "Нет подключения к интернету. Попробуйте позже."
+            }
+            return wrappedError.localizedDescription
+        }
+    }
+
+    func backendMessage(from data: Data?) -> String? {
+        guard
+            let data,
+            !data.isEmpty,
+            let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+        else {
+            return nil
+        }
+
+        if let message = json["message"] as? String, !message.isEmpty {
+            return message
+        }
+
+        if let error = json["error"] as? String, !error.isEmpty {
+            return error
+        }
+
+        return nil
+    }
+
+    func isConnectivityError(_ error: NSError) -> Bool {
+        guard error.domain == NSURLErrorDomain else {
+            return false
+        }
+
+        switch error.code {
+        case NSURLErrorNotConnectedToInternet,
+             NSURLErrorTimedOut,
+             NSURLErrorCannotFindHost,
+             NSURLErrorCannotConnectToHost,
+             NSURLErrorNetworkConnectionLost,
+             NSURLErrorDNSLookupFailed:
+            return true
+        default:
+            return false
+        }
     }
 }
 
 extension AuthViewModel {
     var friendlyError: String {
-        guard let msg = errorMessage else { return "" }
-        let lower = msg.lowercased()
-
-        if lower.contains("network") || lower.contains("internet") {
-            return "Нет подключения к интернету. Попробуйте позже."
-        }
-        if lower.contains("401") || lower.contains("invalid credentials") {
-            return "Неверный логин или пароль."
-        }
-        if (lower.contains("user") && lower.contains("exists")) || lower.contains("already exists") {
-            return "Пользователь уже существует."
-        }
-        return msg
+        errorMessage ?? ""
     }
 }

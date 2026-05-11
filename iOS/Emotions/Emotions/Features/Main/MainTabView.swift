@@ -30,8 +30,8 @@ struct MainTabView: View {
             NavigationStack {
                 CreateNoteView(
                     userId: userId,
-                    albumId: 1,
-                    albumTitle: "Входящие",
+                    albumId: 0,
+                    albumTitle: "Выберите альбом",
                     notesRepo: notesRepo,
                     albumsRepo: albumsRepo,
                     topicsRepo: topicsRepo
@@ -42,10 +42,7 @@ struct MainTabView: View {
             }
 
             NavigationStack {
-                SettingsView(
-                    session: session,
-                    tokenManager: container.tokenManager
-                )
+                SettingsView(session: session)
             }
             .tabItem {
                 Label("Профиль", systemImage: "person")

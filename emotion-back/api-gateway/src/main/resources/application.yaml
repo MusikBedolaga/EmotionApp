@@ -1,0 +1,64 @@
+server:
+  port: ${API_GATEWAY_PORT:8086}
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: ${GATEWAY_ALLOWED_ORIGINS:http://localhost:3000,https://app.example.com}
+            allowedMethods: "GET,POST,PUT,DELETE,OPTIONS"
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+
+      routes:
+        - id: auth-sign
+          uri: ${AUTH_SERVICE_URL:http://localhost:8080}
+          predicates:
+            - Path=/auth/**
+
+        - id: content-service-route
+          uri: ${CONTENT_SERVICE_URL:http://localhost:8091}
+          predicates:
+            - Path=/content/**
+          filters:
+            - RewritePath=/content/(?<segment>.*), /api/${segment}
+
+        - id: ai-analysis-route
+          uri: ${AI_ANALYSIS_SERVICE_URL:http://localhost:8010}
+          predicates:
+            - Path=/ai/**
+          filters:
+            - RewritePath=/ai/(?<segment>.*), /api/ai/${segment}
+
+        - id: analytics-route
+          uri: ${ANALYTICS_SERVICE_URL:http://localhost:8020}
+          predicates:
+            - Path=/stats/**
+          filters:
+            - RewritePath=/stats/(?<segment>.*), /api/stats/${segment}
+
+      discovery:
+        locator:
+          enabled: ${EUREKA_CLIENT_ENABLED:false}
+          lower-case-service-id: true
+
+eureka:
+  client:
+    enabled: ${EUREKA_CLIENT_ENABLED:false}
+    register-with-eureka: ${EUREKA_CLIENT_ENABLED:false}
+    fetch-registry: ${EUREKA_CLIENT_ENABLED:false}
+    service-url:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8081/eureka/}
+
+security:
+  jwt:
+    secret_key: ${JWT_SECRET_KEY:53A73E5F1C4E0A2D3B5F2D784E6A1B423D6F247D1F6E5C3A596D635A75327855}
+
+app:
+  services:
+    content-url: ${CONTENT_SERVICE_URL:http://localhost:8091}

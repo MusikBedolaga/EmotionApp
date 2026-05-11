@@ -22,13 +22,25 @@ struct RootView: View {
                     initialAuthMode: mode
                 )
             case .main:
-                // TODO: временно используем userId = 1, пока userId не прокинут из auth/профиля.
-                MainTabView(userId: 1)
+                if let userId = session.currentUser?.id {
+                    MainTabView(userId: userId)
+                } else {
+                    missingSessionView
+                }
             }
         }
         .task {
             await session.bootstrap()
         }
         .environmentObject(session)
+    }
+
+    private var missingSessionView: some View {
+        VStack(spacing: 12) {
+            ProgressView()
+            Text("Восстанавливаем данные пользователя")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
     }
 }

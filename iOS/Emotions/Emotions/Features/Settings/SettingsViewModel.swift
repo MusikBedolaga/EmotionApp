@@ -1,9 +1,28 @@
 import SwiftUI
 
+enum SettingsTheme: String, CaseIterable, Identifiable {
+    case light
+    case dark
+
+    var id: String {
+        rawValue
+    }
+
+    var title: String {
+        switch self {
+        case .light:
+            return "Светлая"
+        case .dark:
+            return "Тёмная"
+        }
+    }
+}
+
 @MainActor
 final class SettingsViewModel: ObservableObject {
     private enum Keys {
         static let notificationsEnabled = "notifications_enabled"
+        static let selectedTheme = "settings_selected_theme"
     }
 
     @Published
@@ -13,31 +32,36 @@ final class SettingsViewModel: ObservableObject {
         }
     }
 
-    private let session: AppSession
-    private let tokenManager: TokenManagerProtocol
+    @Published
+    var selectedTheme: SettingsTheme {
+        didSet {
+            UserDefaults.standard.set(selectedTheme.rawValue, forKey: Keys.selectedTheme)
+        }
+    }
 
-    init(session: AppSession, tokenManager: TokenManagerProtocol) {
+    @Published
+    private(set) var user: SessionUser
+
+    private let session: AppSession
+
+    init(session: AppSession) {
         self.session = session
-        self.tokenManager = tokenManager
 
         let defaults = UserDefaults.standard
         if defaults.object(forKey: Keys.notificationsEnabled) == nil {
             defaults.set(true, forKey: Keys.notificationsEnabled)
         }
+
+        let storedTheme = defaults.string(forKey: Keys.selectedTheme)
+        let selectedTheme = SettingsTheme(rawValue: storedTheme ?? "") ?? .light
+
         self.notificationsEnabled = defaults.bool(forKey: Keys.notificationsEnabled)
+        self.selectedTheme = selectedTheme
+        self.user = session.currentUser ?? .placeholder
     }
 
     func logout() async {
-        if let bundleId = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: bundleId)
-            UserDefaults.standard.synchronize()
-        }
-
-        // Очищаем авторизацию (токены + креды) в Keychain через существующий TokenManager.
-        await tokenManager.clearCredentials()
-
-        // Триггерим переход на auth.
-        session.route = .auth(mode: .signIn)
+        await session.logout()
     }
 }
 

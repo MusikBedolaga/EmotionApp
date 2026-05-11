@@ -139,6 +139,16 @@ struct CreateNoteView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                 }
                 .pickerStyle(.menu)
+
+                if viewModel.isLoading {
+                    Text("Загружаем список альбомов...")
+                        .font(.footnote)
+                        .foregroundStyle(Color.secondary)
+                } else if viewModel.albums.isEmpty {
+                    Text("Нет доступных альбомов. Сначала создайте альбом.")
+                        .font(.footnote)
+                        .foregroundStyle(Color.red)
+                }
             }
 
             // Топик
@@ -195,8 +205,8 @@ struct CreateNoteView: View {
                 }
             }
             .buttonStyle(.plain)
-            .disabled(viewModel.isSaving)
-            .opacity(viewModel.isSaving ? 0.85 : 1.0)
+            .disabled(viewModel.saveDisabled)
+            .opacity(viewModel.saveDisabled ? 0.85 : 1.0)
             .padding(.top, 4)
         }
         .padding(16)

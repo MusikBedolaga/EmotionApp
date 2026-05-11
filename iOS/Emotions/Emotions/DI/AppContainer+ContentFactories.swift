@@ -16,11 +16,15 @@ extension AppContainer {
         topicsRepository
     }
 
+    func makeAnalyticsAIRepository() -> AnalyticsAIRepositoryProtocol {
+        analyticsAIRepository
+    }
+
     @MainActor
     func makeAlbumsListViewModel(userId: EntityID) -> AlbumsListViewModel {
         AlbumsListViewModel(
             userId: userId,
-            albumsRepo: MockAlbumsRepository(store: ContentMockStore.shared)
+            albumsRepo: albumsRepository
         )
     }
 
@@ -29,9 +33,9 @@ extension AppContainer {
         AlbumDetailsViewModel(
             userId: userId,
             albumId: albumId,
-            albumsRepo: MockAlbumsRepository(store: ContentMockStore.shared),
-            notesRepo: MockNotesRepository(store: ContentMockStore.shared),
-            topicsRepo: MockTopicsRepository(store: ContentMockStore.shared)
+            albumsRepo: albumsRepository,
+            notesRepo: notesRepository,
+            topicsRepo: topicsRepository
         )
     }
 
@@ -41,8 +45,8 @@ extension AppContainer {
             userId: userId,
             noteId: noteId,
             albumTitle: "Альбом",
-            notesRepo: MockNotesRepository(store: ContentMockStore.shared),
-            topicsRepo: MockTopicsRepository(store: ContentMockStore.shared)
+            notesRepo: notesRepository,
+            topicsRepo: topicsRepository
         )
     }
 }

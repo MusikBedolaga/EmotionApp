@@ -20,7 +20,7 @@ extension APIClient: APIClientProtocol {
     func request<T: Decodable>(endpoint: Endpoint) async throws -> T {
         let (data, _) = try await performRequest(endpoint: endpoint)
         do {
-            return try JSONDecoder().decode(T.self, from: data)
+            return try Self.decoder.decode(T.self, from: data)
         } catch {
             log("Ошибка декодирования ответа: \(error.localizedDescription)")
             throw NetworkError.decodingFailed(error)
@@ -34,6 +34,29 @@ extension APIClient: APIClientProtocol {
 
 // MARK: - Helpers
 private extension APIClient {
+    static let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        let formatterWithFraction = ISO8601DateFormatter()
+        formatterWithFraction.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime]
+
+        decoder.dateDecodingStrategy = .custom { decoder in
+            let container = try decoder.singleValueContainer()
+            let rawValue = try container.decode(String.self)
+
+            if let date = formatterWithFraction.date(from: rawValue) ?? formatter.date(from: rawValue) {
+                return date
+            }
+
+            throw DecodingError.dataCorruptedError(
+                in: container,
+                debugDescription: "Unsupported date format: \(rawValue)"
+            )
+        }
+        return decoder
+    }()
+
     func performRequest(endpoint: Endpoint) async throws -> (Data, URLResponse) {
         var currentToken: String?
 

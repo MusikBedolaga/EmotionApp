@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct NotesHomeView: View {
+    @SwiftUI.Environment(\.container)
+    private var container: AppContainer
+
     let userId: Int64
     let albumsRepo: AlbumsRepositoryProtocol
     let notesRepo: NotesRepositoryProtocol
@@ -62,7 +65,13 @@ struct NotesHomeView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(isPresented: $showAnalytics) {
-            AnalyticsStubView()
+            AnalyticsView(
+                userId: userId,
+                albumsRepo: albumsRepo,
+                notesRepo: notesRepo,
+                topicsRepo: topicsRepo,
+                aiRepo: container.makeAnalyticsAIRepository()
+            )
         }
         .navigationDestination(isPresented: $showCreateAlbum) {
             CreateAlbumView(userId: userId, albumsRepo: albumsRepo)
